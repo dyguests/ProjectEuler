@@ -12,9 +12,60 @@ package q2_Even_Fibonacci_numbers
 object Q2 {
     @JvmStatic
     fun main(args: Array<String>) {
-        //short Fibonacci(0)=1 -> f(0)=1
-        //so f(0)=1,f(1)=1,f(2)=2,f(3)=3,f(4)=5,...
-        //so sumOfF(0)=f(0)=1,sumOfF(1)=f(0)+f(1)=2,...
-        //what we needed is sumOfF(n);f(n)<=400,0000 && f(n+1)>400,0000;
+        val start = System.currentTimeMillis()
+//        find(3)
+//        find(10)
+//        find(1000000L)
+//        find(2000000L)
+        find(4000000L)
+        val end = System.currentTimeMillis()
+        println("cost:${end - start}ms")
     }
+
+    private fun find(maxBound: Long) {
+        println("$maxBound -> ${EvenFibonacciNumbersAlgorithm.sumOfFNotExceed(maxBound)}")
+    }
+
+}
+
+/**
+ * short Fibonacci(0)=1 -> f(0)=1
+ * so f(0)=1,f(1)=1,f(2)=2,f(3)=3,f(4)=5,...
+ * so sumOfF(0)=f(0)=1,sumOfF(1)=f(0)+f(1)=2,...
+ * what we needed is sumOfF(n);f(n)<=400,0000 && f(n+1)>400,0000;
+ *
+ * Fibonacci: 1,1,2,3,5
+ * sumOfF:1,2,4,7,12
+ */
+object EvenFibonacciNumbersAlgorithm {
+    /**
+     * 计算费波那契数列中小于maxBound的数的合值
+     *
+     * @param maxBound 最大值上限
+     */
+    fun sumOfFNotExceed(maxBound: Long): Long {
+        /** f(n-2)*/
+        var fnm2 = 1L //f(0)
+        /** f(n-1)*/
+        var fnm1 = 1L //f(1)
+        /** f(n)*/
+        var fn = 2L //f(2)
+        /** number index of Fibonacci Numbers*/
+        var n = 2L
+
+        /** sumOfF(n)*/
+        var sumOfFn = 2L //sumOfF(1)
+
+        do {
+            sumOfFn += fn
+
+            n++
+            fnm2 = fnm1
+            fnm1 = fn
+            fn = fnm2 + fnm1
+        } while (fn <= maxBound)
+
+        return sumOfFn
+    }
+
 }
