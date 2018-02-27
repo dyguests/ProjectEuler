@@ -23,7 +23,7 @@ object Q2 {
     }
 
     private fun find(maxBound: Long) {
-        println("$maxBound -> ${EvenFibonacciNumbersAlgorithm.sumOfFNotExceed(maxBound)}")
+        println("$maxBound -> ${EvenFibonacciNumbersAlgorithm.sumOfFEvenValuedNotExceed(maxBound)}")
     }
 
 }
@@ -31,7 +31,7 @@ object Q2 {
 /**
  * short Fibonacci(0)=1 -> f(0)=1
  * so f(0)=1,f(1)=1,f(2)=2,f(3)=3,f(4)=5,...
- * so sumOfF(0)=f(0)=1,sumOfF(1)=f(0)+f(1)=2,...
+ * so sumOfF(0)=0,sumOfF(1)=f(1)=2,...
  * what we needed is sumOfF(n);f(n)<=400,0000 && f(n+1)>400,0000;
  *
  * Fibonacci: 1,2,3,5,8
@@ -39,11 +39,11 @@ object Q2 {
  */
 object EvenFibonacciNumbersAlgorithm {
     /**
-     * 计算费波那契数列中小于maxBound的数的合值
+     * 计算费波那契数列中小于maxBound的**偶数项**的合值
      *
      * @param maxBound 最大值上限
      */
-    fun sumOfFNotExceed(maxBound: Long): Long {
+    fun sumOfFEvenValuedNotExceed(maxBound: Long): Long {
         /** f(n-2)*/
         var fnm2 = 1L //f(0)
         /** f(n-1)*/
@@ -54,10 +54,12 @@ object EvenFibonacciNumbersAlgorithm {
         var n = 2L
 
         /** sumOfF(n)*/
-        var sumOfFn = 3L //sumOfF(1)
+        var sumOfFn = 2L //sumOfF(1)
 
         do {
-            sumOfFn += fn
+            if (fn % 2 == 0L) {
+                sumOfFn += fn
+            }
 
             n++
             fnm2 = fnm1
