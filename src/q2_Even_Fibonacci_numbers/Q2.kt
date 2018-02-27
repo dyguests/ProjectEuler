@@ -34,8 +34,8 @@ object Q2 {
  * so sumOfF(0)=f(0)=1,sumOfF(1)=f(0)+f(1)=2,...
  * what we needed is sumOfF(n);f(n)<=400,0000 && f(n+1)>400,0000;
  *
- * Fibonacci: 1,1,2,3,5
- * sumOfF:1,2,4,7,12
+ * Fibonacci: 1,2,3,5,8
+ * sumOfF:1,3,6,11,19
  */
 object EvenFibonacciNumbersAlgorithm {
     /**
@@ -47,14 +47,14 @@ object EvenFibonacciNumbersAlgorithm {
         /** f(n-2)*/
         var fnm2 = 1L //f(0)
         /** f(n-1)*/
-        var fnm1 = 1L //f(1)
+        var fnm1 = 2L //f(1)
         /** f(n)*/
-        var fn = 2L //f(2)
+        var fn = 3L //f(2)
         /** number index of Fibonacci Numbers*/
         var n = 2L
 
         /** sumOfF(n)*/
-        var sumOfFn = 2L //sumOfF(1)
+        var sumOfFn = 3L //sumOfF(1)
 
         do {
             sumOfFn += fn
