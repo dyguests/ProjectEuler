@@ -2,7 +2,7 @@ package q3_Largest_prime_factor
 
 import kotlin.math.max
 
-object Main {
+object Q3 {
     @JvmStatic
     fun main(args: Array<String>) {
 //        findLargestPrimeFactorAlgorithm(1)
