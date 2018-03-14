@@ -46,9 +46,9 @@ object RiffleShuffles {
     private fun s(n: Long, times: Long): Boolean {
         val factors: List<Long> = splitFactors(times)
 
-        var currentK = 0L
+        var currentK = 1L
         factors.forEachIndexed { index, factor ->
-            currentK = riffle(1L, n, factor)
+            currentK = riffle(currentK, n, factor)
             if (currentK == 1L && index < factors.size - 1) {
                 return false
             }
