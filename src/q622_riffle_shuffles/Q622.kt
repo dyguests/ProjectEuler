@@ -11,7 +11,7 @@ object Q622 {
     }
 
     private fun find(times: Long) {
-//        println("$times -> ${RiffleShuffles.sumOfN(times)}")
+        println("$times -> ${RiffleShuffles.sumOfN(times)}")
         println("$times -> ${RiffleShuffles.riffle(0, 10, 1)}")
         println("$times -> ${RiffleShuffles.riffle(1, 10, 1)}")
         println("$times -> ${RiffleShuffles.riffle(2, 10, 1)}")
@@ -73,12 +73,7 @@ object RiffleShuffles {
      * @param k k in [0,n-1]
      */
     fun riffle(k: Long, n: Long, times: Long): Long {
-//        val result: Long = MathUtils.pow(2, times)
-        return if (times == 1L) {
-            2 * k % (n - 1) //注：这里对最末一位计算有问题，但是我们不需要最末一位的计算
-        } else {
-            riffle(riffle(k, n, times - 1), n, 1)
-        }
+        return MathUtils.pow(2, times) * k % (n - 1) //注：这里对最末一位计算有问题，但是我们不需要最末一位的计算
     }
 }
 
