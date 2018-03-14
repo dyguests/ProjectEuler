@@ -12,6 +12,7 @@ object Q622 {
 
     private fun find(times: Long) {
 //        println("$times -> ${RiffleShuffles.sumOfN(times)}")
+        println("$times -> ${RiffleShuffles.riffle(0, 10, 1)}")
         println("$times -> ${RiffleShuffles.riffle(1, 10, 1)}")
         println("$times -> ${RiffleShuffles.riffle(2, 10, 1)}")
         println("$times -> ${RiffleShuffles.riffle(3, 10, 1)}")
@@ -21,7 +22,6 @@ object Q622 {
         println("$times -> ${RiffleShuffles.riffle(7, 10, 1)}")
         println("$times -> ${RiffleShuffles.riffle(8, 10, 1)}")
         println("$times -> ${RiffleShuffles.riffle(9, 10, 1)}")
-        println("$times -> ${RiffleShuffles.riffle(10, 10, 1)}")
     }
 }
 
@@ -43,14 +43,14 @@ object RiffleShuffles {
      */
     private fun s(n: Long, times: Long): Boolean {
 //        val kTimes = findTimes(1, n, times)
-        val kTimes = findTimes(2, n, times)
+        val kTimes = findTimes(1, n, times)
         return kTimes == times
     }
 
     /**
      * 计算size为n的牌堆中第k张牌需求洗多少次才能恢复原位
      * 且超过times时不再计算
-     * @param k k in [1,n]
+     * @param k k in [0,n-1]
      * @return 洗牌次数
      */
     private fun findTimes(k: Long, n: Long, maxTimes: Long): Long? {
@@ -70,15 +70,11 @@ object RiffleShuffles {
 
     /**
      * 大于为n的牌堆中第k张牌在洗牌times次后的位置
-     * @param k k in [1,n]
+     * @param k k in [0,n-1]
      */
     fun riffle(k: Long, n: Long, times: Int): Long {
         return if (times == 1) {
-            if (k <= n / 2) {
-                2 * k - 1
-            } else {
-                2 * k - n
-            }
+            2 * k % (n - 1) //注：这里对最末一位计算有问题，但是我们不需要最末一位的计算
         } else {
             riffle(riffle(k, n, times - 1), n, 1)
         }
