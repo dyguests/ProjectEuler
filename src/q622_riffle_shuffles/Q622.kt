@@ -4,14 +4,24 @@ object Q622 {
     @JvmStatic
     fun main(args: Array<String>) {
         val start = System.currentTimeMillis()
-//        find(8)
-        find(60)
+        find(8)
+//        find(60)
         val end = System.currentTimeMillis()
         println("cost:${end - start}ms")
     }
 
     private fun find(times: Long) {
-        println("$times -> ${RiffleShuffles.sumOfN(times)}")
+//        println("$times -> ${RiffleShuffles.sumOfN(times)}")
+        println("$times -> ${RiffleShuffles.riffle(1, 10, 1)}")
+        println("$times -> ${RiffleShuffles.riffle(2, 10, 1)}")
+        println("$times -> ${RiffleShuffles.riffle(3, 10, 1)}")
+        println("$times -> ${RiffleShuffles.riffle(4, 10, 1)}")
+        println("$times -> ${RiffleShuffles.riffle(5, 10, 1)}")
+        println("$times -> ${RiffleShuffles.riffle(6, 10, 1)}")
+        println("$times -> ${RiffleShuffles.riffle(7, 10, 1)}")
+        println("$times -> ${RiffleShuffles.riffle(8, 10, 1)}")
+        println("$times -> ${RiffleShuffles.riffle(9, 10, 1)}")
+        println("$times -> ${RiffleShuffles.riffle(10, 10, 1)}")
     }
 }
 
@@ -19,7 +29,7 @@ object RiffleShuffles {
     fun sumOfN(times: Long): Long {
         var sum = 0L
 //        for (n in 2L..16L step 2) {
-        for (n in (2 )..(times * times * times * times) step 2) {
+        for (n in (2)..(times * times * times * times) step 2) {
             if (s(n, times)) {
                 println("S($n)=$times")
                 sum += n
@@ -62,12 +72,12 @@ object RiffleShuffles {
      * 大于为n的牌堆中第k张牌在洗牌times次后的位置
      * @param k k in [1,n]
      */
-    private fun riffle(k: Long, n: Long, times: Int): Long {
+    fun riffle(k: Long, n: Long, times: Int): Long {
         return if (times == 1) {
             if (k <= n / 2) {
-                2 * (k - 1) + 1
+                2 * k - 1
             } else {
-                n - 2 * (n - k)
+                2 * k - n
             }
         } else {
             riffle(riffle(k, n, times - 1), n, 1)
