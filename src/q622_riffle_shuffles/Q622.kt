@@ -72,8 +72,9 @@ object RiffleShuffles {
      * 大于为n的牌堆中第k张牌在洗牌times次后的位置
      * @param k k in [0,n-1]
      */
-    fun riffle(k: Long, n: Long, times: Int): Long {
-        return if (times == 1) {
+    fun riffle(k: Long, n: Long, times: Long): Long {
+//        val result: Long = MathUtils.pow(2, times)
+        return if (times == 1L) {
             2 * k % (n - 1) //注：这里对最末一位计算有问题，但是我们不需要最末一位的计算
         } else {
             riffle(riffle(k, n, times - 1), n, 1)
