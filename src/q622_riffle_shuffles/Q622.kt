@@ -18,16 +18,60 @@ object Q622 {
 object RiffleShuffles {
     fun sumOfN(times: Long): Long {
         var sum = 0L
-        for (n in 0L..4 step 2) {
+//        for (n in 2L..16L step 2) {
+        for (n in 2L..16L step 2) {
             if (s(n, times)) {
+                println("S($n)=$times")
                 sum += n
             }
         }
         return sum
     }
 
+    /**
+     * 验证数量为n的牌堆是否切times次就可以复原
+     */
     private fun s(n: Long, times: Long): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//        val kTimes = findTimes(1, n, times)
+        val kTimes = findTimes(2, n, times)
+        return kTimes == times
+    }
+
+    /**
+     * 计算size为n的牌堆中第k张牌需求洗多少次才能恢复原位
+     * 且超过times时不再计算
+     * @param k k in [1,n]
+     * @return 洗牌次数
+     */
+    private fun findTimes(k: Long, n: Long, maxTimes: Long): Long? {
+        var spendedTimes = 0L
+        var currentK = k
+        do {
+            if (spendedTimes >= maxTimes) {
+                return null
+            }
+
+            currentK = riffle(currentK, n, 1)
+            spendedTimes++
+        } while (currentK != k)
+
+        return spendedTimes
+    }
+
+    /**
+     * 大于为n的牌堆中第k张牌在洗牌times次后的位置
+     * @param k k in [1,n]
+     */
+    private fun riffle(k: Long, n: Long, times: Int): Long {
+        return if (times == 1) {
+            if (k <= n / 2) {
+                2 * (k - 1) + 1
+            } else {
+                n - 2 * (n - k)
+            }
+        } else {
+            riffle(riffle(k, n, times - 1), n, 1)
+        }
     }
 }
 
