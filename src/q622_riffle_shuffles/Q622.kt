@@ -4,7 +4,7 @@ object Q622 {
     @JvmStatic
     fun main(args: Array<String>) {
         val start = System.currentTimeMillis()
-        find(2)
+        find(8)
 //        find(60)
         val end = System.currentTimeMillis()
         println("cost:${end - start}ms")
@@ -19,7 +19,7 @@ object RiffleShuffles {
     fun sumOfN(times: Long): Long {
         var sum = 0L
 //        for (n in 2L..16L step 2) {
-        for (n in 2L..16L step 2) {
+        for (n in (times * 2)..(times * times * times) step 2) {
             if (s(n, times)) {
                 println("S($n)=$times")
                 sum += n
