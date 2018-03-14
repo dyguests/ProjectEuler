@@ -39,12 +39,15 @@ object RiffleShuffles {
     }
 
     /**
-     * 验证数量为n的牌堆是否切times次就可以复原
+     * 验证数量为n的牌堆是否**至少**切times次就可以复原
+     *
+     * 注：如何切times次可以复原，但切 times/n {n > 1} 也可以复原的话，不算
      */
     private fun s(n: Long, times: Long): Boolean {
-//        val kTimes = findTimes(1, n, times)
         val kTimes = findTimes(1, n, times)
         return kTimes == times
+
+//        return 1L == riffle(1L, n, times)
     }
 
     /**
