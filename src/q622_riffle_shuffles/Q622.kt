@@ -12,16 +12,16 @@ object Q622 {
 
     private fun find(times: Long) {
         println("$times -> ${RiffleShuffles.sumOfN(times)}")
-        println("$times -> ${RiffleShuffles.riffle(0, 10, 1)}")
-        println("$times -> ${RiffleShuffles.riffle(1, 10, 1)}")
-        println("$times -> ${RiffleShuffles.riffle(2, 10, 1)}")
-        println("$times -> ${RiffleShuffles.riffle(3, 10, 1)}")
-        println("$times -> ${RiffleShuffles.riffle(4, 10, 1)}")
-        println("$times -> ${RiffleShuffles.riffle(5, 10, 1)}")
-        println("$times -> ${RiffleShuffles.riffle(6, 10, 1)}")
-        println("$times -> ${RiffleShuffles.riffle(7, 10, 1)}")
-        println("$times -> ${RiffleShuffles.riffle(8, 10, 1)}")
-        println("$times -> ${RiffleShuffles.riffle(9, 10, 1)}")
+//        println("$times -> ${RiffleShuffles.riffle(0, 10, 1)}")
+//        println("$times -> ${RiffleShuffles.riffle(1, 10, 1)}")
+//        println("$times -> ${RiffleShuffles.riffle(2, 10, 1)}")
+//        println("$times -> ${RiffleShuffles.riffle(3, 10, 1)}")
+//        println("$times -> ${RiffleShuffles.riffle(4, 10, 1)}")
+//        println("$times -> ${RiffleShuffles.riffle(5, 10, 1)}")
+//        println("$times -> ${RiffleShuffles.riffle(6, 10, 1)}")
+//        println("$times -> ${RiffleShuffles.riffle(7, 10, 1)}")
+//        println("$times -> ${RiffleShuffles.riffle(8, 10, 1)}")
+//        println("$times -> ${RiffleShuffles.riffle(9, 10, 1)}")
     }
 }
 
@@ -29,7 +29,7 @@ object RiffleShuffles {
     fun sumOfN(times: Long): Long {
         var sum = 0L
 //        for (n in 2L..16L step 2) {
-        for (n in (2)..(times * times * times * times) step 2) {
+        for (n in 4..(times * times * times * times) step 2) {
             if (s(n, times)) {
                 println("S($n)=$times")
                 sum += n
@@ -44,10 +44,16 @@ object RiffleShuffles {
      * 注：如何切times次可以复原，但切 times/n {n > 1} 也可以复原的话，不算
      */
     private fun s(n: Long, times: Long): Boolean {
-        val kTimes = findTimes(1, n, times)
-        return kTimes == times
+        val factors: List<Long> = splitFactors(times)
 
-//        return 1L == riffle(1L, n, times)
+        var currentK = 0L
+        factors.forEachIndexed { index, factor ->
+            currentK = riffle(1L, n, factor)
+            if (currentK == 1L && index < factors.size - 1) {
+                return false
+            }
+        }
+        return currentK == 1L
     }
 
     /**
@@ -73,10 +79,34 @@ object RiffleShuffles {
 
     /**
      * 大于为n的牌堆中第k张牌在洗牌times次后的位置
+     *
+     * 这里简化成除余的算式
+     *
      * @param k k in [0,n-1]
      */
     fun riffle(k: Long, n: Long, times: Long): Long {
         return MathUtils.pow(2, times) * k % (n - 1) //注：这里对最末一位计算有问题，但是我们不需要最末一位的计算
+    }
+
+    /**
+     * 将times拆分成数个质数的积
+     */
+    private fun splitFactors(times: Long): List<Long> {
+        val factors = ArrayList<Long>()
+
+        var total = times
+        var factor = 2L
+        while (factor < total) {
+            if (total % factor == 0L) {
+                factors.add(factor)
+                total /= factor
+            } else {
+                factor++
+            }
+        }
+        factors.add(total)
+
+        return factors
     }
 }
 
