@@ -4,6 +4,7 @@ object Q622 {
     @JvmStatic
     fun main(args: Array<String>) {
         val start = System.currentTimeMillis()
+//        find(4)
         find(8)
 //        find(60)
         val end = System.currentTimeMillis()
@@ -28,8 +29,8 @@ object Q622 {
 object RiffleShuffles {
     fun sumOfN(times: Long): Long {
         var sum = 0L
-//        for (n in 2L..16L step 2) {
-        for (n in 4..(times * times * times * times) step 2) {
+//        for (n in times..(times * times * times) step 2) {
+        for (n in 52L..52L step 2) {
             if (s(n, times)) {
                 println("S($n)=$times")
                 sum += n
