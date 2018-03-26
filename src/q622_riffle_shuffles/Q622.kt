@@ -20,7 +20,7 @@ object RiffleShuffles {
     fun sumOfN(times: Long): Long {
         var sum = 0L
 
-        for (n in 2L..500L step 2) {
+        for (n in 4L..MathUtils.pow(2, times) step 2) {
             if (s(n, times)) {
                 println("S($n)=$times")
                 sum += n
