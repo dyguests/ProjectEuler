@@ -57,24 +57,4 @@ object RiffleShuffles {
         return MathUtils.pow(2, times) * k % (n - 1) //注：这里对最末一位计算有问题，但是我们不需要最末一位的计算
     }
 
-    /**
-     * 将times拆分成数个质数的积
-     */
-    private fun splitFactors(times: Long): List<Long> {
-        val factors = ArrayList<Long>()
-
-        var total = times
-        var factor = 2L
-        while (factor < total) {
-            if (total % factor == 0L) {
-                factors.add(factor)
-                total /= factor
-            } else {
-                factor++
-            }
-        }
-        factors.add(total)
-
-        return factors
-    }
 }
