@@ -6,10 +6,12 @@ object Q622 {
         val start = System.currentTimeMillis()
 
         find(8)
+//        println(MathUtils.pow(2,60))
 
         val end = System.currentTimeMillis()
         println("cost:${end - start}ms")
-    }
+
+   }
 
     private fun find(times: Long) {
         println("$times -> ${RiffleShuffles.sumOfN(times)}")
