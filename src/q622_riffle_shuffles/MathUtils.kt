@@ -12,4 +12,25 @@ object MathUtils {
         }
         return result
     }
+
+    /**
+     * 将times拆分成数个质数的积
+     */
+     fun splitFactors(num: Long): List<Long> {
+        val factors = ArrayList<Long>()
+
+        var total = num
+        var factor = 2L
+        while (factor < total) {
+            if (total % factor == 0L) {
+                factors.add(factor)
+                total /= factor
+            } else {
+                factor++
+            }
+        }
+        factors.add(total)
+
+        return factors
+    }
 }
