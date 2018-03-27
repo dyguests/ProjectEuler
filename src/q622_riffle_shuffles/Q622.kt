@@ -6,7 +6,7 @@ object Q622 {
         val start = System.currentTimeMillis()
 
         find(8)
-        println(MathUtils.findPrimeFactors(MathUtils.pow(2, 60) - 1L))
+//        println(MathUtils.findPrimeFactors(MathUtils.pow(2, 60) - 1L))
 
         val end = System.currentTimeMillis()
         println("cost:${end - start}ms")
@@ -22,15 +22,13 @@ object RiffleShuffles2 {
     fun sumOfN(times: Long): Long {
         var sum = 0L
 
-//        //将切次数分解质因子
-//        val timesPrimeFactors = MathUtils.findPrimeFactors(times)
-
-        val timesPowFactors = MathUtils.findPrimeFactors(MathUtils.pow(2, 60) - 1L)
+        val timesPowFactors = MathUtils.findPrimeFactors(MathUtils.pow(2, times) - 1L)
 
         //所有因子（不包含0和本身）
         val timesFactors = MathUtils.findFactors(times)
 
-
+        //所有子因子的质数分解
+        val subTimesPowFactorss = timesFactors.map { MathUtils.findPrimeFactors(MathUtils.pow(2, it) - 1L) }
 
         return sum
     }
