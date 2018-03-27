@@ -1,5 +1,8 @@
 package q622_riffle_shuffles
 
+import java.util.ArrayList
+
+
 object MathUtils {
     /**
      * 整型乘方
@@ -14,7 +17,8 @@ object MathUtils {
     }
 
     /**
-     * 找出times的质因子
+     * 分解times的质因子
+     *  eg: input 60 output {2,2,3,5}
      */
     fun findPrimeFactors(num: Long): List<Long> {
         val factors = ArrayList<Long>()
@@ -36,10 +40,54 @@ object MathUtils {
 
     /**
      * 找出times的因子
+     *
+     * 不包含1，包含基本身
+     *
+     * eg: input 60 output {2,3,4,5,6,10,15,20,30,60}
      */
     fun findFactors(num: Long): List<Long> {
-        //TODO 这不是最优算法
+        val primeFactors = findPrimeFactors(num)
 
-        return (2L..num / 2).filter { num % it == 0L }
+        val subSet = getSubSet(primeFactors)
+
+        return subSet
+                .filter { it.isNotEmpty() }
+                .map {
+                    var product = 1L
+                    for (l in it) {
+                        product *= l
+                    }
+                    product
+                }
+                .distinct()
+
+//        return (2L..num / 2).filter { num % it == 0L }
     }
+
+    /**
+     * 取得一个集合的所有子集
+     *
+     * TODO:注：可能会出现重复的 如 {2,2,3} 的子集可能会有 {2(第一个2),3},{2(第二个2),3},还需要一个去重处理
+     */
+    fun getSubSet(set: List<Long>): List<List<Long>> {
+        val result = ArrayList<ArrayList<Long>>()
+        if (set.isNotEmpty()) {
+            var i = 0
+            while (i < Math.pow(2.0, set.size.toDouble())) {// 集合子集个数=2的该集合长度的乘方
+                val subSet = ArrayList<Long>()
+                var index = i// 索引从0一直到2的集合长度的乘方-1
+                for (j in set.indices) {
+                    // 通过逐一位移，判断索引那一位是1，如果是，再添加此项
+                    if (index and 1 == 1) {// 位与运算，判断最后一位是否为1
+                        subSet.add(set[j])
+                    }
+                    index = index shr 1// 索引右移一位
+                }
+                result.add(subSet) // 把子集存储起来
+                i++
+            }
+        }
+        return result
+    }
+
 }
