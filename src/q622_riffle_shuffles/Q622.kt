@@ -5,7 +5,7 @@ object Q622 {
     fun main(args: Array<String>) {
         val start = System.currentTimeMillis()
 
-        find(8)
+        find(60)
 
         val end = System.currentTimeMillis()
         println("cost:${end - start}ms")
