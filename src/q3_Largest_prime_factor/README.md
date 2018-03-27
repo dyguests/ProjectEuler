@@ -5,8 +5,3 @@
 ![pic](./graphics/WechatIMG1.jpeg)
 
 结果：
-
-```
-600851475143 -> 6857
-cost:17ms
-```
