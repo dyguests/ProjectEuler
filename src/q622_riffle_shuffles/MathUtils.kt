@@ -14,9 +14,9 @@ object MathUtils {
     }
 
     /**
-     * 将times拆分成数个质数的积
+     * 找出times的质因子
      */
-     fun splitFactors(num: Long): List<Long> {
+    fun findPrimeFactors(num: Long): List<Long> {
         val factors = ArrayList<Long>()
 
         var total = num
@@ -32,5 +32,14 @@ object MathUtils {
         factors.add(total)
 
         return factors
+    }
+
+    /**
+     * 找出times的因子
+     */
+    fun findFactors(num: Long): List<Long> {
+        //TODO 这不是最优算法
+
+        return (2L..num / 2).filter { num % it == 0L }
     }
 }
