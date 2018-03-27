@@ -19,6 +19,7 @@ object Q622 {
 
 object RiffleShuffles {
     fun sumOfN(times: Long): Long {
+        //牌堆为n时，第k张牌洗t次之后的位置在 2^t*k%(n-1)
         //n张切t次可以复原可以简写成：(2^t-1)%(n-1)=0
 
         //当 n-1 in timesPowFactors 时，size为n的堆切time次后都可以复原
