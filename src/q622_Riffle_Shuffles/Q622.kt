@@ -1,4 +1,4 @@
-package q622_riffle_shuffles
+package q622_Riffle_Shuffles
 
 object Q622 {
     @JvmStatic
@@ -9,7 +9,6 @@ object Q622 {
 
         val end = System.currentTimeMillis()
         println("cost:${end - start}ms")
-
     }
 
     private fun find(times: Long) {

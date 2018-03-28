@@ -1,4 +1,4 @@
-package q622_riffle_shuffles
+package q622_Riffle_Shuffles
 
 import java.util.ArrayList
 
