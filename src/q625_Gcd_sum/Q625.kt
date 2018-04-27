@@ -1,6 +1,6 @@
 package q625_Gcd_sum
 
-import q622_Riffle_Shuffles.MathUtils
+import util.MathUtils
 
 /**
  * https://projecteuler.net/problem=625

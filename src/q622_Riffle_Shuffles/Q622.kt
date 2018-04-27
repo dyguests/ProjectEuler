@@ -1,5 +1,7 @@
 package q622_Riffle_Shuffles
 
+import util.MathUtils
+
 object Q622 {
     @JvmStatic
     fun main(args: Array<String>) {
