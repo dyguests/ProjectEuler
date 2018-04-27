@@ -1,5 +1,7 @@
 package q625_Gcd_sum
 
+import q622_Riffle_Shuffles.MathUtils
+
 /**
  * https://projecteuler.net/problem=625
  *
@@ -14,7 +16,8 @@ object Q625 {
     fun main(args: Array<String>) {
         val start = System.currentTimeMillis()
 
-        find(10)//result=122
+        test(10L, 15L)
+//        find(10)//result=122
 //        find(MathUtils.pow(10, 11))
 
         val end = System.currentTimeMillis()
@@ -25,10 +28,24 @@ object Q625 {
         val result = GcdSum.g(n)
         println("$n -> $result")
     }
+
+    private fun test(i: Long, j: Long) {
+        println("$i,$j -> ${MathUtils.gcd(i, j)}")
+    }
 }
 
 object GcdSum {
     fun g(n: Long): Long {
-        return 11
+        var sum = 0L
+        for (j in 1..n) {
+            for (i in 1..j) {
+                sum += gcd(i, j)
+            }
+        }
+        return sum
+    }
+
+    private fun gcd(i: Long, j: Long): Long {
+        return MathUtils.gcd(i, j)
     }
 }

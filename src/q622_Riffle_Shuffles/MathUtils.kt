@@ -90,4 +90,22 @@ object MathUtils {
         return result
     }
 
+    /**
+     * 获取最大公因数
+     */
+    fun gcd(i: Long, j: Long): Long {
+        if (i == 0L || j == 0L) return 0L
+        var i = if (i > j) i else j
+        var j = if (i > j) j else i
+
+        var t: Long
+        do {
+            t = i % j
+            i = j
+            j = t
+
+        } while (t != 0L)
+        return j
+    }
+
 }
