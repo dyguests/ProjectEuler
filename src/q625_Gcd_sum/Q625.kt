@@ -16,8 +16,8 @@ object Q625 {
     fun main(args: Array<String>) {
         val start = System.currentTimeMillis()
 
-        test(10L, 15L)
-//        find(10)//result=122
+//        test(10L, 15L)
+        find(10)//result=122
 //        find(MathUtils.pow(10, 11))
 
         val end = System.currentTimeMillis()
