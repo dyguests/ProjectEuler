@@ -1,5 +1,14 @@
 package q625_Gcd_sum
 
+/**
+ * https://projecteuler.net/problem=625
+ *
+ *
+ * G(N)=∑Nj=1∑ji=1gcd(i,j).
+ * You are given: G(10)=122.
+ *
+ * Find G(1011). Give your answer modulo 998244353
+ */
 object Q625 {
     @JvmStatic
     fun main(args: Array<String>) {
