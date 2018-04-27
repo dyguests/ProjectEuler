@@ -105,7 +105,7 @@ object MathUtils {
             j = t
 
         } while (t != 0L)
-        return j
+        return i
     }
 
 }
