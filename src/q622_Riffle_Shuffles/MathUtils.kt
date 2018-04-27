@@ -93,10 +93,10 @@ object MathUtils {
     /**
      * 获取最大公因数
      */
-    fun gcd(i: Long, j: Long): Long {
-        if (i == 0L || j == 0L) return 0L
-        var i = if (i > j) i else j
-        var j = if (i > j) j else i
+    fun gcd(ii: Long, jj: Long): Long {
+        if (ii == 0L || jj == 0L) return 0L
+        var i = if (ii > jj) ii else jj
+        var j = if (ii > jj) jj else ii
 
         var t: Long
         do {
