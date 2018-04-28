@@ -24,7 +24,7 @@ object Q9 {
 
     private fun find(sum: Int) {
         val result = PythagoreanTriplet.abc(sum)
-        println("$sum$result")
+        println("$sum -> $result")
     }
 }
 
