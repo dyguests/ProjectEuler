@@ -61,7 +61,7 @@ object LargestProduct {
         val queue = LinkedList<Long>()
         digits.toList().map(Char::toString).map(String::toLong).iterator().forEach {
             queue.offer(it)
-            if (queue.size > 4) {
+            if (queue.size > capacity) {
                 queue.poll()
             }
 
