@@ -1,21 +1,9 @@
 package q8_Largest_product_in_a_series
 
-import com.sun.jmx.remote.internal.ArrayQueue
 import java.util.*
-import java.util.concurrent.ArrayBlockingQueue
-import java.util.concurrent.LinkedTransferQueue
 import kotlin.math.max
 
-/**
- * https://projecteuler.net/problem=625
- *
- *
- * G(N)=∑Nj=1∑ji=1gcd(i,j).
- * You are given: G(10)=122.
- *
- * Find G(1011). Give your answer modulo 998244353
- */
-object Q625 {
+object Q8 {
     val digits = "73167176531330624919225119674426574742355349194934" +
             "96983520312774506326239578318016984801869478851843" +
             "85861560789112949495459501737958331952853208805511" +
