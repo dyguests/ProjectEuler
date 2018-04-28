@@ -45,6 +45,16 @@ object GcdSum {
         return sum
     }
 
+    fun gBase(n: Long): Long {
+        var sum = 0L
+        for (j in 1..n) {
+            for (i in 1..j) {
+                sum += gcd(i, j)
+            }
+        }
+        return sum
+    }
+
     private fun gcd(i: Long, j: Long): Long {
         return MathUtils.gcd(i, j)
     }
