@@ -2,6 +2,7 @@ package q8_Largest_product_in_a_series
 
 import com.sun.jmx.remote.internal.ArrayQueue
 import java.util.*
+import java.util.concurrent.ArrayBlockingQueue
 import kotlin.math.max
 
 /**
@@ -56,7 +57,7 @@ object LargestProduct {
     fun l(digits: String, capacity: Int): Long {
         var result = 0L
 
-        val queue = ArrayDeque<Long>(capacity)
+        val queue = ArrayBlockingQueue<Long>(capacity)
 //        offer
 //        poll
         digits.toList().map(Char::toString).map(String::toLong).iterator().forEach {
