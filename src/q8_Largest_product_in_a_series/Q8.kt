@@ -3,6 +3,7 @@ package q8_Largest_product_in_a_series
 import com.sun.jmx.remote.internal.ArrayQueue
 import java.util.*
 import java.util.concurrent.ArrayBlockingQueue
+import java.util.concurrent.LinkedTransferQueue
 import kotlin.math.max
 
 /**
@@ -40,8 +41,8 @@ object Q625 {
     fun main(args: Array<String>) {
         val start = System.currentTimeMillis()
 
-        find(digits, 4)
-//        find(digits, 13)
+//        find(digits, 4)
+        find(digits, 13)
 
         val end = System.currentTimeMillis()
         println("cost:${end - start}ms")
@@ -57,13 +58,14 @@ object LargestProduct {
     fun l(digits: String, capacity: Int): Long {
         var result = 0L
 
-        val queue = ArrayBlockingQueue<Long>(capacity)
-//        offer
-//        poll
+        val queue = LinkedList<Long>()
         digits.toList().map(Char::toString).map(String::toLong).iterator().forEach {
             queue.offer(it)
+            if (queue.size > 4) {
+                queue.poll()
+            }
 
-            result = max(result, queue.reduce { acc, l -> acc * (l ?: 1) })
+            result = max(result, queue.reduce { acc, l -> acc * l })
         }
 
         return result
