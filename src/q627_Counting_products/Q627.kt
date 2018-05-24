@@ -18,13 +18,14 @@ object Q627 {
 }
 
 object CountingProducts {
+    const val MOD_NUM = 1000000007L
 
     fun fMod(m: Long, n: Long): Long {
         val decompositions = decomposition(m)
 
 //        30^10001,不管重复的话，关键在于怎么去重
 
-        return 0L
+        return 0L % MOD_NUM
     }
 
     /**
