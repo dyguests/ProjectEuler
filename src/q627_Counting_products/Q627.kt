@@ -4,24 +4,41 @@ object Q627 {
     @JvmStatic
     fun main(args: Array<String>) {
         val start = System.currentTimeMillis()
-        find(4, 2)
-        find(9, 2)
-        find(30, 2)
+//        find(4, 2)
+        find(4, 3)
+//        find(4, 4)
+//        find(4, 5)
+//        find(5, 2)
+//        find(5, 3)
+//        find(5, 4)
+//        find(5, 5)
+//        find(9, 2)
+//        find(9, 3)
+//        find(9, 4)
+//        find(9, 5)
+//        find(30, 2)
+//        find(30, 3)
+//        find(30, 4)
+//        find(30, 5)
+//        find(30, 10001)
         val end = System.currentTimeMillis()
         println("cost:${end - start}ms")
     }
 
     private fun find(m: Long, n: Long) {
-        println("$m,$n -> ${CountingProducts.fModTmp(m, n)}")
+        println("F($m,$n) -> ${CountingProducts.fMod(m, n)}")
+//        println("F($m,$n) -> ${CountingProducts.fModTmp(m, n)}")
     }
 
 }
 
 object CountingProducts {
-    const val MOD_NUM = 1000000007L
+    private const val MOD_NUM = 1000000007L
 
     fun fMod(m: Long, n: Long): Long {
         val decompositions = decomposition(m)
+
+//        var result =
 
 //        30^10001,不管重复的话，关键在于怎么去重
 
